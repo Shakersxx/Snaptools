@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapLink Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="SnapLink home"><span class="brand-mark">S</span><span>SnapLink</span></a>
+        <span class="header-tag">Simple digital tools</span>
+      </header>
+
+      <section class="hero" id="top">
+        <p class="eyebrow">ONE LINK, ONE SCAN</p>
+        <h1>Make sharing<br /><em>effortless.</em></h1>
+        <p class="hero-copy">Turn any link into a ready-to-share QR code, or gather your photos into a beautiful PDF — all in one place.</p>
+      </section>
+
+      <section class="tool-grid" aria-label="SnapLink tools">
+        <article class="tool-card qr-card">
+          <div class="card-topline"><span class="tool-icon">⌁</span><span class="card-number">01</span></div>
+          <div>
+            <p class="eyebrow">QR CODE MAKER</p>
+            <h2>Any link.<br />One scan.</h2>
+            <p class="card-copy">Instagram, Facebook, WhatsApp, a website — paste the link and we’ll create your QR code instantly.</p>
+          </div>
+          <form id="qr-form" class="qr-form">
+            <label for="link-input">Your link</label>
+            <div class="input-row">
+              <input id="link-input" type="text" inputmode="url" placeholder="https://instagram.com/yourname" required />
+              <button type="submit">Generate <span>→</span></button>
+            </div>
+          </form>
+          <div id="qr-result" class="qr-result" hidden>
+            <div id="qrcode" aria-label="Generated QR code"></div>
+            <div class="qr-result-actions">
+              <p>Ready to scan</p>
+              <button id="download-qr" type="button" class="text-button">Download PNG ↓</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="tool-card pdf-card">
+          <div class="card-topline"><span class="tool-icon">▣</span><span class="card-number">02</span></div>
+          <div>
+            <p class="eyebrow">PHOTO TO PDF</p>
+            <h2>Your moments,<br /><em>one document.</em></h2>
+            <p class="card-copy">Choose photos from your gallery and turn them into a clean, shareable PDF in seconds.</p>
+          </div>
+          <div id="photo-drop-zone" class="photo-drop-zone">
+            <span class="photo-icon">✦</span>
+            <strong>Add your photos</strong>
+            <small>We’ll ask for camera access first</small>
+            <button id="select-photos" type="button">Select photos <span>→</span></button>
+            <input id="photo-input" type="file" accept="image/*" multiple hidden />
+          </div>
+          <div id="photo-preview" class="photo-preview" hidden>
+            <div class="preview-head"><span id="photo-count">0 photos selected</span><button id="clear-photos" type="button" class="text-button">Clear</button></div>
+            <div id="preview-list" class="preview-list"></div>
+            <button id="make-pdf" type="button" class="primary-wide">Create PDF <span>→</span></button>
+          </div>
+        </article>
+      </section>
+
+      <p class="privacy-note"><span>✦</span> Your links and photos stay on your device. Nothing is uploaded.</p>
+    </main>
+
+    <div id="camera-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="camera-title">
+      <div class="modal-panel">
+        <button id="close-modal" class="modal-close" aria-label="Close">×</button>
+        <div class="modal-icon">⌾</div>
+        <p class="eyebrow">CAMERA ACCESS</p>
+        <h2 id="camera-title">Let’s get permission first.</h2>
+        <p>To make selecting or taking photos seamless, please allow camera access. You can still choose existing photos from your gallery.</p>
+        <button id="allow-camera" class="primary-wide" type="button">Allow camera access <span>→</span></button>
+        <button id="continue-gallery" class="text-button modal-skip" type="button">Continue to gallery</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
